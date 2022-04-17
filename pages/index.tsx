@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Header, Banner, Row } from '../components/index'
+import { Header, Banner, Row } from '../components'
 import { Movie } from '../typings'
 import { requests } from '../utils/requests'
 
