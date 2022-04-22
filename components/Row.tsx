@@ -13,7 +13,7 @@ export const Row = ({ title, movies }: Props) => {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
 
-  const handleScroll = (Direction: String) => {
+  const handleScroll = (Direction: string) => {
     setIsMoved(true)
     if (rowRef.current) {
       const { scrollLeft, clientWidth } = rowRef.current
