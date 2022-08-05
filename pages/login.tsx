@@ -17,7 +17,13 @@ function login() {
     formState: { errors },
   } = useForm<Inputs>()
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+    if (login) {
+      // await signIn(email, password);
+    } else {
+      // await signUp(email, password);
+    }
+  }
 
   return (
     <div className="relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent">
@@ -53,7 +59,11 @@ function login() {
               className="input"
               {...register('email', { required: true })}
             />
-            {errors.email && <span className="">This field is required</span>}
+            {errors.email && (
+              <p className="p-1 text-[13px] font-light text-orange-500">
+                This enter a valid email address
+              </p>
+            )}
           </label>
           <label className=" inline-block w-full">
             <input
@@ -63,7 +73,9 @@ function login() {
               {...register('password', { required: true, minLength: 5 })}
             />
             {errors.password && (
-              <span>Password needs to be at least 5 characters</span>
+              <p className="p-1 text-[13px] font-light text-orange-500">
+                Password needs to be at least 5 characters
+              </p>
             )}
           </label>
         </div>
