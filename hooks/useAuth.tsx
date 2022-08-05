@@ -16,7 +16,7 @@ interface AuthProviderProps {
 interface IAuth {
   user: User | null
   signIn: (email: string, password: string) => Promise<void>
-  signOut: (email: string, password: string) => Promise<void>
+  signUp: (email: string, password: string) => Promise<void>
   logout: () => Promise<void>
   loading: boolean
   error: string | null
@@ -25,7 +25,7 @@ interface IAuth {
 const AuthContext = createContext<IAuth>({
   user: null,
   signIn: async () => {},
-  signOut: async () => {},
+  signUp: async () => {},
   logout: async () => {},
   loading: false,
   error: null,
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     () => ({
       user,
       signIn,
-      signOut,
+      signUp,
       logout,
       error,
       loading,
