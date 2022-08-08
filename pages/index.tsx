@@ -1,8 +1,11 @@
 import Head from 'next/head'
-import { Header, Banner, Row } from '../components'
+import { Header, Banner, Row, Modal } from '../components'
 import useAuth from '../hooks/useAuth'
 import { Movie } from '../typings'
 import { requests } from '../utils/requests'
+import { modalState } from '../atoms/modalAtom'
+import { useRecoilValue } from 'recoil'
+// import { Modal } from '../components/Modal'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -25,7 +28,8 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-  const { logout, loading } = useAuth()
+  const { loading } = useAuth()
+  const showModal = useRecoilValue(modalState)
 
   if (loading) return null
   return (
@@ -52,6 +56,7 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <Modal />}
     </div>
   )
 }
