@@ -38,10 +38,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [error, setError] = useState(null)
   const [initialLoading, setInitialLoading] = useState(true)
 
+  // persisting the User
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          //Logged in...
           setUser(user)
           setLoading(false)
         } else {
