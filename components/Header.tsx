@@ -6,6 +6,7 @@ export const Header = () => {
   const [isScrolled, setScrolled] = useState(false)
   const { logout } = useAuth()
 
+  // window scroll feature
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
